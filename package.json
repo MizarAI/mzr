@@ -1,0 +1,23 @@
+{
+  "name": "mzr",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "test": "truffle test",
+    "start": "truffle develop",
+    "truffle": "truffle"
+  },
+  "prettier": {
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all"
+  },
+  "dependencies": {
+    "openzeppelin-solidity": "^4.4.2"
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.12.2",
+    "truffle": "^5.4.28",
+    "truffle-flattener": "^1.5.0"
+  }
+}
