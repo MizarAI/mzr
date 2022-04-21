@@ -5,8 +5,10 @@
 // Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
 const ethers = hre.ethers;
+import { addDays } from "date-fns";
 import { BN, bufferToHex, privateToAddress, toBuffer } from "ethereumjs-util"
 import { normalizeHardhatNetworkAccountsConfig } from "hardhat/internal/core/providers/util"
+import * as testUtils from "../test/utils"
 
 
 async function main() {
@@ -25,7 +27,7 @@ async function main() {
   console.log(`Account #0: ${address} Private Key: ${privateKey}`)
 
 
-  const MZR = await ethers.getContractFactory("ERC20Mock");
+  const MZR = await ethers.getContractFactory("MZR");
   const mzr = await MZR.deploy();
   await mzr.deployed();
 
