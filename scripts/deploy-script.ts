@@ -50,8 +50,8 @@ async function main() {
     try {
       await hre.run('verify:verify', {
         address: mzr.address,
-        bytecode: mzr.bytecode,
-        contract: "contracts/ERC20Mock.sol:ERC20Mock",
+        // bytecode: mzr.bytecode,
+        // contract: "contracts/MZR.sol:MZR",
       });
     } catch (e) {
       console.log("error with vefication")

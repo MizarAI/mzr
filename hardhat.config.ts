@@ -9,7 +9,7 @@ import { HardhatUserConfig } from 'hardhat/types';
 // import "./tasks"
 
 const accounts = {
-  mnemonic: process.env.MNEMONIC || "test test test test test test test test test test test junk",
+  mnemonic: process.env.MNEMONIC || "what glove never goat pony smoke pill misery poet anxiety injury cloth",
 }
 
 
