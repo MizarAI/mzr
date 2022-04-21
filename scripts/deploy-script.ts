@@ -46,17 +46,18 @@ async function main() {
   /** 
     * verifying token contract
     */
-  try {
-    await hre.run('verify:verify', {
-      address: mzr.address,
-      bytecode: mzr.bytecode,
-      contract: "contracts/ERC20Mock.sol:ERC20Mock",
-    });
-  } catch (e) {
-    console.log("error with vefication")
-    console.log(e.message)
+  if (hre.network.name != "localhost") {
+    try {
+      await hre.run('verify:verify', {
+        address: mzr.address,
+        bytecode: mzr.bytecode,
+        contract: "contracts/ERC20Mock.sol:ERC20Mock",
+      });
+    } catch (e) {
+      console.log("error with vefication")
+      console.log(e.message)
+    }
   }
-
 }
 
 // We recommend this pattern to be able to use async/await everywhere
