@@ -29,7 +29,8 @@ const config: HardhatUserConfig = {
   etherscan: {
     apiKey: {
       bscTestnet:process.env.API_KEY,
-      ftmTestnet:process.env.API_KEY
+      ftmTestnet:process.env.API_KEY,
+      avalancheFujiTestnet:process.env.API_KEY,
     },        
   },
   networks: {
