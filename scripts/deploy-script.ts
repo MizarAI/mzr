@@ -43,21 +43,21 @@ async function main() {
 
   console.log("mzr deployed to:", mzr.address);
 
-  /** 
-    * verifying token contract
-    */
-  if (hre.network.name != "localhost") {
-    try {
-      await hre.run('verify:verify', {
-        address: mzr.address,
-        // bytecode: mzr.bytecode,
-        // contract: "contracts/MZR.sol:MZR",
-      });
-    } catch (e) {
-      console.log("error with vefication")
-      console.log(e.message)
-    }
-  }
+  // /** 
+  //   * verifying token contract
+  //   */
+  // if (hre.network.name != "localhost") {
+  //   try {
+  //     await hre.run('verify:verify', {
+  //       address: mzr.address,
+  //       // bytecode: mzr.bytecode,
+  //       // contract: "contracts/MZR.sol:MZR",
+  //     });
+  //   } catch (e) {
+  //     console.log("error with vefication")
+  //     console.log(e.message)
+  //   }
+  // }
 }
 
 // We recommend this pattern to be able to use async/await everywhere
