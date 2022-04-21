@@ -5,10 +5,8 @@
 // Runtime Environment's members available in the global scope.
 const hre = require("hardhat");
 const ethers = hre.ethers;
-import { addDays } from "date-fns";
 import { BN, bufferToHex, privateToAddress, toBuffer } from "ethereumjs-util"
 import { normalizeHardhatNetworkAccountsConfig } from "hardhat/internal/core/providers/util"
-import * as testUtils from "../test/utils"
 
 
 async function main() {
@@ -39,7 +37,7 @@ async function main() {
       testUtils.advanceBlock(60)
     }, 100);
   }
-  await mzr.deployTransaction.wait(30)
+  await mzr.deployTransaction.wait(15)
 
   console.log("mzr deployed to:", mzr.address);
 
@@ -57,49 +55,6 @@ async function main() {
     console.log(e.message)
   }
 
-
-  const Farming = await ethers.getContractFactory("Farming");
-  const farming = await Farming.deploy();
-  await farming.deployed();
-
-  /**
-    * waiting x amount of time (localhost=10blocks) before triggering verify
-    */
-  if (hre.network.name == "localhost") {
-    setInterval(function () {
-      testUtils.advanceBlock(60)
-    }, 100);
-  }
-  await mzr.deployTransaction.wait(30)
-
-  console.log("farming deployed to:", farming.address);
-
-  /** 
-    * verifying farming contract
-    */
-  try {
-    await hre.run('verify:verify', {
-      address: farming.address,
-      bytecode: farming.bytecode,
-      contract: "contracts/farming.sol:Farming",
-    });
-
-  } catch (e) {
-    console.log("error with vefication")
-    console.log(e.message)
-  }
-
-
-  /** 
-    * initialising farming contract
-  */
-  let currentDate = addDays(new Date(), 1)
-  await farming.initialize(
-    address,
-    mzr.address,
-    100,
-    Math.trunc(currentDate.getTime() / 1000),
-    Math.trunc((currentDate.getTime() + (60 * 24 * 60 * 60)) / 1000))
 }
 
 // We recommend this pattern to be able to use async/await everywhere
