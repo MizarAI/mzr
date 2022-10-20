@@ -5,3 +5,6 @@
 .idea/
 /artifacts/
 /cache/
+
+.DS_Store
+
